@@ -16,6 +16,8 @@ namespace CRUD_application_2
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            // Register Unity with MVC
+            UnityConfig.RegisterComponents();
         }
     }
 }

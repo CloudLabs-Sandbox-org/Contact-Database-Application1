@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "webAppName": {
+      "type": "string",
+      "defaultValue": "ghcopilot-desi-test",
+      "metadata": {
+        "description": "The name of the web app that you wish to create."
+      }
+    },
+    "appServicePlanName": {
+      "type": "string",
+      "defaultValue": "asp-dotnet8",
+      "metadata": {
+        "description": "The name of the App Service plan to use for hosting the web app."
+      }
+    },
+    "appServicePlanSku": {
+      "type": "string",
+      "defaultValue": "S1",
+      "metadata": {
+        "description": "The SKU of the App Service plan."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "westus",
+      "metadata": {
+        "description": "The location to use for creating the App Service plan and web app."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2020-06-01",
+      "name": "[parameters('appServicePlanName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('appServicePlanSku')]",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2020-06-01",
+      "name": "[parameters('webAppName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+      ],
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+        "siteConfig": {
+          "alwaysOn": true,
+          "netFrameworkVersion": "v4.0"
+        }
+      }
+    }
+  ]
+}
