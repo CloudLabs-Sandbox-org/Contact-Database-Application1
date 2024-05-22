@@ -169,7 +169,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="deploy.json" />
-    <Content Include="deplay.parameters.json" />
+    <Content Include="deploy.parameters.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -199,6 +199,7 @@
     <Content Include="Views\User\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".GITHUB\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
