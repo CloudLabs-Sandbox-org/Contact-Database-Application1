@@ -54,7 +54,7 @@
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "alwaysOn": true,
-          "netFrameworkVersion": "v4.0"
+          "netFrameworkVersion": "v4.8"
         }
       }
     }
